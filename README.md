@@ -30,19 +30,35 @@ limitations under the License.
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/string-starts-with
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@deno/mod.js';
+var startsWith = require( '@stdlib/string-starts-with' );
 ```
 
 #### startsWith( str, search\[, position] )
 
-Tests if a `string` starts with the characters of another `string`.
+Tests if a string starts with the characters of another string.
 
 ```javascript
 var str = 'To be, or not to be, that is the question.';
@@ -54,7 +70,7 @@ bool = startsWith( str, 'to be' );
 // returns false
 ```
 
-By default, the function searches from the beginning of the input `string`. To search from a different character index, provide a `position` value (zero-based). If provided a negative `position`, the start index is determined relative to the string end (`pos = str.length + position`).
+By default, the function searches from the beginning of the input string. To search from a different character index, provide a `position` value (zero-based). If provided a negative `position`, the start index is determined relative to the string end (i.e., `pos = str.length + position`).
 
 ```javascript
 var str = 'Remember the story I used to tell you when you were a boy?';
@@ -82,6 +98,20 @@ var bool = startsWith( str, '' );
 
 <!-- /.usage -->
 
+<section class="notes">
+
+## Notes
+
+-   This function differs from [`String.prototype.startsWith`][mdn-string-startswith] in the following ways:
+
+    -   The function requires string values for the first and second arguments and requires that the `position` argument be an integer value.
+    -   The function does **not** clamp negative `position` values. Instead, when provided a negative `position`, the function resolves the starting search position relative to the end of the string.
+    -   Except when provided an empty `search` string, the function **always** returns `false` is a `position` resolves to a starting search position which exceeds the bounds of the input string.
+
+</section>
+
+<!-- /.notes -->
+
 <section class="examples">
 
 ## Examples
@@ -89,14 +119,11 @@ var bool = startsWith( str, '' );
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@deno/mod.js';
+var startsWith = require( '@stdlib/string-starts-with' );
 
-var bool;
-var str;
+var str = 'Fair is foul, and foul is fair, hover through fog and filthy air';
 
-str = 'Fair is foul, and foul is fair, hover through fog and filthy air';
-
-bool = startsWith( str, 'Fair' );
+var bool = startsWith( str, 'Fair' );
 // returns true
 
 bool = startsWith( str, 'fair' );
@@ -113,7 +140,101 @@ bool = startsWith( str, 'filthy', -10 );
 
 <!-- /.examples -->
 
+* * *
 
+<section class="cli">
+
+## CLI
+
+<section class="installation">
+
+## Installation
+
+To use the module as a general utility, install the module globally
+
+```bash
+npm install -g @stdlib/string-starts-with
+```
+
+</section>
+
+<!-- CLI usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```text
+Usage: starts-with [options] --search=<string> [<string>]
+
+Options:
+
+  -h,    --help                Print this message.
+  -V,    --version             Print the package version.
+         --search string       Search string.
+         --pos int             Search position.
+         --split sep           Delimiter for stdin data. Default: '/\\r?\\n/'.
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- CLI usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+### Notes
+
+-   If the split separator is a [regular expression][mdn-regexp], ensure that the `split` option is either properly escaped or enclosed in quotes.
+
+    ```bash
+    # Not escaped...
+    $ echo -n $'Hello, World!\nBeep Boop Baz' | starts-with --search=Beep --split /\r?\n/
+
+    # Escaped...
+    $ echo -n $'Hello, World!\nBeep Boop Baz' | starts-with --search=Beep --split /\\r?\\n/
+    ```
+
+-   The implementation ignores trailing delimiters.
+
+</section>
+
+</section>
+
+<!-- /.notes -->
+
+<section class="examples">
+
+### Examples
+
+```bash
+$ starts-with --search=be beep
+true
+```
+
+To use as a [standard stream][standard-streams],
+
+```bash
+$ echo -n 'boop' | starts-with --search=bo
+true
+```
+
+By default, when used as a [standard stream][standard-streams], the implementation assumes newline-delimited data. To specify an alternative delimiter, set the `split` option.
+
+```bash
+$ echo -n 'Hello, World!\tBeep Boop' | starts-with --search=Beep --split '\t'
+false
+true
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.cli -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -138,7 +259,7 @@ bool = startsWith( str, 'filthy', -10 );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -202,9 +323,11 @@ Copyright &copy; 2016-2022. The Stdlib [Authors][stdlib-authors].
 
 [mdn-regexp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
+[mdn-string-startswith]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+
 <!-- <related-links> -->
 
-[@stdlib/string/ends-with]: https://github.com/stdlib-js/string-ends-with/tree/deno
+[@stdlib/string/ends-with]: https://github.com/stdlib-js/string-ends-with
 
 <!-- </related-links> -->
 
