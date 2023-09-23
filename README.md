@@ -48,6 +48,11 @@ limitations under the License.
 ## Usage
 
 ```javascript
+import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@esm/index.mjs';
+```
+The previous example will load the latest bundled code from the esm branch. Alternatively, you may load a specific version by loading the file from one of the [tagged bundles](https://github.com/stdlib-js/string-starts-with/tags). For example,
+
+```javascript
 import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@v0.1.0-esm/index.mjs';
 ```
 
@@ -119,7 +124,7 @@ var bool = startsWith( str, '' );
 <body>
 <script type="module">
 
-import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@v0.1.0-esm/index.mjs';
+import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@esm/index.mjs';
 
 var str = 'Fair is foul, and foul is fair, hover through fog and filthy air';
 
