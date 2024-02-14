@@ -41,124 +41,19 @@ limitations under the License.
 
 <!-- /.intro -->
 
-<section class="installation">
 
-## Installation
 
-```bash
-npm install @stdlib/string-starts-with
-```
 
-Alternatively,
 
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
--   To use as a general utility for the command line, install the corresponding [CLI package][cli-section] globally.
 
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
 
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
 
-</section>
 
-<section class="usage">
 
-## Usage
-
-```javascript
-var startsWith = require( '@stdlib/string-starts-with' );
-```
-
-#### startsWith( str, search\[, position] )
-
-Tests if a string starts with the characters of another string.
-
-```javascript
-var str = 'To be, or not to be, that is the question.';
-
-var bool = startsWith( str, 'To be' );
-// returns true
-
-bool = startsWith( str, 'to be' );
-// returns false
-```
-
-By default, the function searches from the beginning of the input string. To search from a different character index, provide a `position` value (zero-based). If provided a negative `position`, the start index is determined relative to the string end (i.e., `pos = str.length + position`).
-
-```javascript
-var str = 'Remember the story I used to tell you when you were a boy?';
-
-var bool = startsWith( str, 'the story' );
-// returns false
-
-bool = startsWith( str, 'the story', 9 );
-// returns true
-
-bool = startsWith( str, 'you', -15 );
-// returns true
-```
-
-If provided an empty `search` string, the function **always** returns `true`.
-
-```javascript
-var str = 'beep boop';
-
-var bool = startsWith( str, '' );
-// returns true
-```
-
-</section>
-
-<!-- /.usage -->
-
-<section class="notes">
-
-## Notes
-
--   This function differs from [`String.prototype.startsWith`][mdn-string-startswith] in the following ways:
-
-    -   The function requires string values for the first and second arguments and requires that the `position` argument be an integer value.
-    -   The function does **not** clamp negative `position` values. Instead, when provided a negative `position`, the function resolves the starting search position relative to the end of the string.
-    -   Except when provided an empty `search` string, the function **always** returns `false` if a `position` resolves to a starting search position which exceeds the bounds of the input string.
-
-</section>
-
-<!-- /.notes -->
-
-<section class="examples">
-
-## Examples
-
-<!-- eslint no-undef: "error" -->
-
-```javascript
-var startsWith = require( '@stdlib/string-starts-with' );
-
-var str = 'Fair is foul, and foul is fair, hover through fog and filthy air';
-
-var bool = startsWith( str, 'Fair' );
-// returns true
-
-bool = startsWith( str, 'fair' );
-// returns false
-
-bool = startsWith( str, 'foul', 8 );
-// returns true
-
-bool = startsWith( str, 'filthy', -10 );
-// returns true
-```
-
-</section>
-
-<!-- /.examples -->
-
-* * *
 
 <section class="cli">
 
-## CLI
+
 
 <section class="installation">
 
@@ -176,7 +71,7 @@ npm install -g @stdlib/string-starts-with-cli
 
 <section class="usage">
 
-### Usage
+## Usage
 
 ```text
 Usage: starts-with [options] --search=<string> [<string>]
@@ -198,7 +93,7 @@ Options:
 
 <section class="notes">
 
-### Notes
+## Notes
 
 -   If the split separator is a [regular expression][mdn-regexp], ensure that the `split` option is either properly escaped or enclosed in quotes.
 
@@ -220,7 +115,7 @@ Options:
 
 <section class="examples">
 
-### Examples
+## Examples
 
 ```bash
 $ starts-with --search=be beep
@@ -254,10 +149,9 @@ true
 
 <section class="related">
 
-* * *
-
 ## See Also
 
+-   <span class="package-name">[`@stdlib/string-starts-with`][@stdlib/string-starts-with]</span><span class="delimiter">: </span><span class="description">test if a string starts with the characters of another string.</span>
 -   <span class="package-name">[`@stdlib/string-ends-with`][@stdlib/string/ends-with]</span><span class="delimiter">: </span><span class="description">test if a string ends with the characters of another string.</span>
 
 </section>
@@ -277,7 +171,7 @@ This package is part of [stdlib][stdlib], a standard library for JavaScript and 
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
-#### Community
+### Community
 
 [![Chat][chat-image]][chat-url]
 
@@ -300,8 +194,8 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 <section class="links">
 
-[npm-image]: http://img.shields.io/npm/v/@stdlib/string-starts-with.svg
-[npm-url]: https://npmjs.org/package/@stdlib/string-starts-with
+[npm-image]: http://img.shields.io/npm/v/@stdlib/string-starts-with-cli.svg
+[npm-url]: https://npmjs.org/package/@stdlib/string-starts-with-cli
 
 [test-image]: https://github.com/stdlib-js/string-starts-with/actions/workflows/test.yml/badge.svg?branch=v0.2.0
 [test-url]: https://github.com/stdlib-js/string-starts-with/actions/workflows/test.yml?query=branch:v0.2.0
