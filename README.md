@@ -48,7 +48,7 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@deno/mod.js';
+import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@v0.2.0-deno/mod.js';
 ```
 
 #### startsWith( str, search\[, position] )
@@ -114,7 +114,7 @@ var bool = startsWith( str, '' );
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@deno/mod.js';
+import startsWith from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-starts-with@v0.2.0-deno/mod.js';
 
 var str = 'Fair is foul, and foul is fair, hover through fog and filthy air';
 
